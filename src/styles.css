@@ -1,0 +1,124 @@
+body {
+  background: linear-gradient(
+    95deg,
+    rgb(149, 213, 245) 0%,
+    rgb(183, 222, 227) 45%,
+    rgb(247, 238, 192) 95%
+  );
+  font-family: ;
+}
+
+.container {
+  max-width: 600px;
+  margin: 20px auto;
+  opacity: 0.5;
+  padding: 20px;
+  position: relative;
+  top: 50px;
+
+  border: 2px solid black;
+  background: linear-gradient(
+    95deg,
+    rgb(149, 213, 245) 0%,
+    rgb(183, 222, 227) 45%,
+    rgb(247, 238, 192) 95%
+  );
+}
+
+form {
+  display: flex;
+  justify-content: center; /* horizontally center the form */
+  align-items: center; /* vertically center the form */
+}
+.card-container1 {
+  display: flex;
+  justify-content: center;
+}
+
+.card1 {
+  width: 500px;
+  height: 150px;
+  padding: 10px;
+  box-sizing: border-box;
+  text-align: center;
+  border: 2px solid black;
+  border-radius: 0%;
+  background-color: transparent;
+}
+.card1:hover {
+  border: none;
+  color: white;
+  background: #f1e493;
+  transition: 150ms ease-in-out;
+}
+button {
+  border-radius: 3px;
+  background-color: #efefef;
+}
+
+.img-container1 {
+  margin: 0 auto;
+  display: block;
+  position: relative;
+  top: -80px;
+}
+
+h2 {
+  position: relative;
+  right: 157px;
+  font: small;
+}
+.units {
+  position: relative;
+  top: -13px;
+  font-size: medium;
+}
+units:hover {
+  cursor: pointer;
+}
+h3 {
+  font-size: small;
+  position: relative;
+  left: 157px;
+  bottom: 150px;
+}
+h4 {
+  text-align: center;
+  position: relative;
+  bottom: 155px;
+}
+
+.card-container {
+  display: flex;
+  justify-content: center;
+  justify-content: space-between 5px;
+  gap: 10px;
+}
+
+.card {
+  width: 200px;
+  height: 180px;
+  padding: 10px;
+  box-sizing: border-box;
+  text-align: center;
+  border: 2px solid black;
+  border-radius: 0%;
+  flex-basis: calc(20% - 20px);
+  background-color: transparent;
+}
+.card:hover {
+  color: white;
+  border: none;
+  background: #f1e493;
+  transition: 150ms ease-in-out;
+}
+.card-fourth {
+  padding-top: 15px;
+}
+
+footer {
+  text-align: center;
+  position: relative;
+  top: 50px;
+  color: white;
+}
