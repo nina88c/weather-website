@@ -5,7 +5,7 @@ body {
     rgb(183, 222, 227) 45%,
     rgb(247, 238, 192) 95%
   );
-  font-family: ;
+ 
 }
 
 .container {
@@ -26,9 +26,15 @@ body {
 }
 
 form {
-  display: flex;
-  justify-content: center; /* horizontally center the form */
-  align-items: center; /* vertically center the form */
+  position: relative;
+  left: 150px;
+  margin: 0 auto;
+  display: block;
+}
+
+button {
+  border-radius: 3px;
+  background-color: #efefef;
 }
 .card-container1 {
   display: flex;
@@ -50,10 +56,6 @@ form {
   color: white;
   background: #f1e493;
   transition: 150ms ease-in-out;
-}
-button {
-  border-radius: 3px;
-  background-color: #efefef;
 }
 
 .img-container1 {
