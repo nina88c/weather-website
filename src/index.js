@@ -29,14 +29,11 @@ function formatDate(date) {
   return `${day} ${hours}:${minutes}`;
 }
 
-// Modified function to format the day for forecast, starting from the next day
-function formatDay(timestamp, index) {
+// Function to format the day for forecast
+function formatDay(timestamp) {
   let date = new Date(timestamp * 1000);
-  // Get the day index and add the index to start from the following day
-  let day = (date.getDay() + index + 1) % 7; // Ensure it loops back to Sunday if needed
   let days = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
-
-  return days[day]; // Return the day name based on the calculated day index
+  return days[date.getDay()]; // Return the day name based on the calculated day index
 }
 
 // Modify the displayForecast function to pass the index to formatDay
@@ -44,37 +41,37 @@ function displayForecast(response) {
   let forecast = response.data.daily;
   let forecastElement = document.querySelector("#forecast");
 
-  let forecastHTML = `<div class="card-container">`;
-  forecast.forEach(function (forecastDay, index) {
-    if (index < 5) {
-      // Use formatDay function with the index to get the next day's names
-      forecastHTML =
-        forecastHTML +
-        `
-      <div class="card">
-        <div class="weather-forecast-date">${formatDay(forecastDay.dt, index)}</div>
-    
-        <img
-          src="http://openweathermap.org/img/wn/${
-            forecastDay.weather[0].icon
-          }@2x.png"
-          alt=""
-          
-        />
-        <div class="weather-forecast-temperatures">
-          <span class="weather-forecast-temperature-max"> 
-          ${Math.round(forecastDay.temp.max)}° | </span>
-          <span class="weather-forecast-temperature-min"> 
-          ${Math.round(forecastDay.temp.min)}° </span>
-        </div>
-      </div>
-      `;
-    }
-  });
+  let forecastHTML = '<div class="card-container">';
 
-  forecastHTML = forecastHTML + `</div>`;
+  for (let index = 1; index < 6; index++) {
+    // Get the forecast for the next five days
+    forecastHTML +=
+      `
+    <div class="card">
+      <div class="weather-forecast-date">${formatDay(forecast[index].dt)}</div>
+      <!-- Display forecast for each day -->
+  
+      <img
+        src="http://openweathermap.org/img/wn/${
+          forecast[index].weather[0].icon
+        }@2x.png"
+        alt=""
+        
+      />
+      <div class="weather-forecast-temperatures">
+        <span class="weather-forecast-temperature-max"> 
+        ${Math.round(forecast[index].temp.max)}° | </span>
+        <span class="weather-forecast-temperature-min"> 
+        ${Math.round(forecast[index].temp.min)}° </span>
+      </div>
+    </div>
+    `;
+  }
+
+  forecastHTML += '</div>';
   forecastElement.innerHTML = forecastHTML; // Set the forecast HTML content
 }
+
 
 
 function getForecast(coordinates) {
