@@ -114,10 +114,9 @@ h4 {
   background: #f1e493;
   transition: 150ms ease-in-out;
 }
-.card-fourth {
-  padding-top: 15px;
+.weather-forecast-temperature-min{
+  opacity: .6;
 }
-
 footer {
   text-align: center;
   position: relative;

@@ -29,14 +29,17 @@ function formatDate(date) {
   return `${day} ${hours}:${minutes}`;
 }
 
-function formatDay(timestamp) {
+// Modified function to format the day for forecast, starting from the next day
+function formatDay(timestamp, index) {
   let date = new Date(timestamp * 1000);
-  let day = date.getDay();
+  // Get the day index and add the index to start from the following day
+  let day = (date.getDay() + index + 1) % 7; // Ensure it loops back to Sunday if needed
   let days = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
 
-  return days[day];
+  return days[day]; // Return the day name based on the calculated day index
 }
-//forecast
+
+// Modify the displayForecast function to pass the index to formatDay
 function displayForecast(response) {
   let forecast = response.data.daily;
   let forecastElement = document.querySelector("#forecast");
@@ -44,11 +47,12 @@ function displayForecast(response) {
   let forecastHTML = `<div class="card-container">`;
   forecast.forEach(function (forecastDay, index) {
     if (index < 5) {
+      // Use formatDay function with the index to get the next day's names
       forecastHTML =
         forecastHTML +
         `
       <div class="card">
-        <div class="weather-forecast-date">${formatDay(forecastDay.dt)}</div>
+        <div class="weather-forecast-date">${formatDay(forecastDay.dt, index)}</div>
     
         <img
           src="http://openweathermap.org/img/wn/${
@@ -69,8 +73,9 @@ function displayForecast(response) {
   });
 
   forecastHTML = forecastHTML + `</div>`;
-  forecastElement.innerHTML = forecastHTML;
+  forecastElement.innerHTML = forecastHTML; // Set the forecast HTML content
 }
+
 
 function getForecast(coordinates) {
   console.log(coordinates);
